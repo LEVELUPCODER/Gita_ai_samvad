@@ -1,3 +1,13 @@
-.streamlit/
+# Security: Hide your API keys
+.env
+
+# Data: Don't upload the heavy database folder
+gita_db/
+
+# Python: Ignore local environment and cache
 venv/
 __pycache__/
+*.py[cod]
+
+# Streamlit: Hide local secrets
+.streamlit/
