@@ -111,12 +111,16 @@ st.markdown(f"""
         display: none !important;
     }}
     
-    /* Hide Fork, GitHub, Settings */
+    /* Hide Fork, GitHub, Settings, and Streamlit logo */
     .stDeployButton,
     #MainMenu,
     footer,
     [data-testid="stToolbar"],
-    [data-testid="stHeader"] {{
+    [data-testid="stHeader"],
+    [data-testid="stDecoration"],
+    .viewerBadge_link__qRIco,
+    .viewerBadge_container__r5tak,
+    #stStreamlitLogo {{
         visibility: hidden !important;
         display: none !important;
         height: 0 !important;
