@@ -100,15 +100,21 @@ st.markdown(f"""
     [data-testid="stSidebar"] span {{ font-size: 13px !important; }}
     [data-testid="stSidebar"] h1 {{ font-size: 1.2rem !important; }}
     
-    /* Hide Streamlit header menu (Fork, Deploy, Settings) */
-    [data-testid="stHeader"],
+    /* Hide Streamlit header menu (Fork, Deploy, Settings) but keep sidebar toggle */
     [data-testid="stToolbar"],
     .stDeployButton,
     #MainMenu,
-    header,
     footer {{
         visibility: hidden !important;
         display: none !important;
+    }}
+    /* Keep sidebar collapse button visible */
+    [data-testid="stSidebarCollapsedControl"],
+    [data-testid="collapsedControl"],
+    button[kind="header"] {{
+        visibility: visible !important;
+        display: flex !important;
+        z-index: 999999 !important;
     }}
     </style>
     """, unsafe_allow_html=True)
