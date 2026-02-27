@@ -100,12 +100,22 @@ st.markdown(f"""
     [data-testid="stSidebar"] span {{ font-size: 13px !important; }}
     [data-testid="stSidebar"] h1 {{ font-size: 1.2rem !important; }}
     
-    /* Hide only Fork and Settings, keep sidebar toggle visible */
+    /* Hide Fork, GitHub, Settings - keep sidebar toggle */
     .stDeployButton,
     #MainMenu,
-    footer {{
+    footer,
+    [data-testid="stToolbar"],
+    a[href*="github.com"],
+    .viewerBadge_container__r5tak,
+    .styles_viewerBadge__CvC9N {{
         visibility: hidden !important;
         display: none !important;
+    }}
+    /* Keep sidebar toggle button visible */
+    [data-testid="stSidebarCollapsedControl"],
+    [data-testid="collapsedControl"] {{
+        visibility: visible !important;
+        display: block !important;
     }}
     </style>
     """, unsafe_allow_html=True)
