@@ -100,15 +100,33 @@ st.markdown(f"""
     [data-testid="stSidebar"] span {{ font-size: 13px !important; }}
     [data-testid="stSidebar"] h1 {{ font-size: 1.2rem !important; }}
     
-    /* Make sidebar fixed (always visible, no collapse) */
-    [data-testid="stSidebar"][aria-expanded="false"] {{
-        display: block !important;
-        visibility: visible !important;
-        transform: none !important;
-        margin-left: 0 !important;
+    /* Responsive sidebar behavior */
+    /* On large screens (desktop/computer): sidebar always visible */
+    @media (min-width: 768px) {{
+        [data-testid="stSidebar"][aria-expanded="false"] {{
+            display: block !important;
+            visibility: visible !important;
+            transform: none !important;
+            margin-left: 0 !important;
+        }}
+        [data-testid="stSidebarCollapsedControl"] {{
+            display: none !important;
+        }}
     }}
-    [data-testid="stSidebarCollapsedControl"] {{
-        display: none !important;
+    
+    /* On small screens (phone): sidebar collapsible, show toggle button */
+    @media (max-width: 767px) {{
+        [data-testid="stSidebar"] {{
+            width: 250px !important;
+            min-width: 250px !important;
+        }}
+        [data-testid="stSidebar"][aria-expanded="false"] {{
+            margin-left: -250px !important;
+            transform: translateX(0) !important;
+        }}
+        [data-testid="stSidebarCollapsedControl"] {{
+            display: block !important;
+        }}
     }}
     
     /* Hide Fork, GitHub, Settings, and Streamlit logo */
@@ -166,7 +184,7 @@ for i, msg in enumerate(st.session_state.chat_history):
                     st.toast("Saved!")
 
 # --- 7. INPUT & LOGIC ---
-if prompt := st.chat_input("Ask Your Life Related Doubts...(here, Parth!)"):
+if prompt := st.chat_input("Ask Your Life Related Doubts..."):
     if feather_data: 
         st.markdown(f'<img src="{feather_data}" class="feather-anim">', unsafe_allow_html=True)
     
