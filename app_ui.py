@@ -99,6 +99,14 @@ st.markdown(f"""
     [data-testid="stSidebar"] p,
     [data-testid="stSidebar"] span {{ font-size: 13px !important; }}
     [data-testid="stSidebar"] h1 {{ font-size: 1.2rem !important; }}
+    
+    /* Hide only Fork and Settings, keep sidebar toggle visible */
+    .stDeployButton,
+    #MainMenu,
+    footer {{
+        visibility: hidden !important;
+        display: none !important;
+    }}
     </style>
     """, unsafe_allow_html=True)
 
