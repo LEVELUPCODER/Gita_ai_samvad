@@ -59,7 +59,7 @@ st.markdown(f"""
         pointer-events: none; 
         animation: divineDrift 6.5s ease-in-out forwards;
     }}
-    .stChatMessage div, .stMarkdown p {{ font-size: 26px !important; line-height: 1.6 !important; }}
+    .stChatMessage div, .stMarkdown p {{ font-size: 22px !important; line-height: 1.6 !important; }}
     .stChatInput textarea {{ font-size: 24px !important; }}
     @keyframes radheGlow {{
         0% {{ color: #FFD700; text-shadow: 0 0 10px #FF69B4; transform: scale(1); }}
@@ -70,8 +70,41 @@ st.markdown(f"""
     .stChatMessage {{ background: rgba(255, 255, 255, 0.07) !important; backdrop-filter: blur(15px); border-radius: 15px !important; }}
     [data-testid="stSidebar"] {{ background-color: rgba(15, 15, 15, 0.95) !important; }}
     .dev-footer {{ text-align: center; font-size: 20px; color: rgba(255, 255, 255, 0.9); margin-top: 50px; padding: 20px; font-style: italic; }}
+    
+    /* Scale UI to 75% and center */
+    .main .block-container,
+    [data-testid="stMainBlockContainer"] {{
+        max-width: 100% !important;
+        margin: 0 !important;
+        margin-left: 0 !important;
+        padding-left: 2rem !important;
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }}
+    .stChatMessage div, .stMarkdown p {{ font-size: 16px !important; line-height: 1.5 !important; }}
+    .stChatInput textarea {{ font-size: 18px !important; }}
+    .radhe-loader {{ font-size: 42px; }}
+    .feather-anim {{ width: 210px; }}
+    .dev-footer {{ font-size: 15px; margin-top: 30px; padding: 15px; }}
+    h1 {{ font-size: 2rem !important; }}
+    h4 {{ font-size: 1rem !important; }}
+    [data-testid="stSidebar"] {{
+        width: 180px !important;
+        min-width: 180px !important;
+    }}
+    [data-testid="stSidebar"] > div {{
+        width: 180px !important;
+    }}
+    [data-testid="stSidebar"] .stMarkdown, 
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span {{ font-size: 13px !important; }}
+    [data-testid="stSidebar"] h1 {{ font-size: 1.2rem !important; }}
     </style>
     """, unsafe_allow_html=True)
+
+
+
+
 
 # --- 5. SIDEBAR ---
 with st.sidebar:
@@ -107,7 +140,7 @@ for i, msg in enumerate(st.session_state.chat_history):
                     st.toast("Saved!")
 
 # --- 7. INPUT & LOGIC ---
-if prompt := st.chat_input("Speak your heart, Parth..."):
+if prompt := st.chat_input("Ask Your Life Related Doubts...(here, Parth!)"):
     if feather_data: 
         st.markdown(f'<img src="{feather_data}" class="feather-anim">', unsafe_allow_html=True)
     
