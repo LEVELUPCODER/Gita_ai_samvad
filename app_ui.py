@@ -100,22 +100,26 @@ st.markdown(f"""
     [data-testid="stSidebar"] span {{ font-size: 13px !important; }}
     [data-testid="stSidebar"] h1 {{ font-size: 1.2rem !important; }}
     
-    /* Hide Fork, GitHub, Settings - keep sidebar toggle */
+    /* Make sidebar fixed (always visible, no collapse) */
+    [data-testid="stSidebar"][aria-expanded="false"] {{
+        display: block !important;
+        visibility: visible !important;
+        transform: none !important;
+        margin-left: 0 !important;
+    }}
+    [data-testid="stSidebarCollapsedControl"] {{
+        display: none !important;
+    }}
+    
+    /* Hide Fork, GitHub, Settings */
     .stDeployButton,
     #MainMenu,
     footer,
     [data-testid="stToolbar"],
-    a[href*="github.com"],
-    .viewerBadge_container__r5tak,
-    .styles_viewerBadge__CvC9N {{
+    [data-testid="stHeader"] {{
         visibility: hidden !important;
         display: none !important;
-    }}
-    /* Keep sidebar toggle button visible */
-    [data-testid="stSidebarCollapsedControl"],
-    [data-testid="collapsedControl"] {{
-        visibility: visible !important;
-        display: block !important;
+        height: 0 !important;
     }}
     </style>
     """, unsafe_allow_html=True)
